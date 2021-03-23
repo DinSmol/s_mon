@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_03_20_202515) do
 
   create_table "active_periods", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "address"
-    t.datetime "started_at", default: "2021-03-23 14:34:17"
+    t.datetime "started_at", default: "2021-03-23 20:31:26"
     t.datetime "stopped_at"
-    t.datetime "created_at", default: "2021-03-23 14:34:17"
-    t.datetime "updated_at", default: "2021-03-23 14:34:17"
+    t.datetime "created_at", default: "2021-03-23 20:31:26"
+    t.datetime "updated_at", default: "2021-03-23 20:31:26"
     t.index ["started_at"], name: "index_active_periods_on_started_at"
     t.index ["stopped_at"], name: "index_active_periods_on_stopped_at"
   end
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_202515) do
     t.float "max"
     t.float "mdev"
     t.float "loss"
-    t.datetime "created_at", default: "2021-03-23 14:34:17"
-    t.datetime "updated_at", default: "2021-03-23 14:34:17"
+    t.datetime "created_at", default: "2021-03-23 20:31:26"
+    t.datetime "updated_at", default: "2021-03-23 20:31:26"
   end
 
 end

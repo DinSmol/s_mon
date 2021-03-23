@@ -9,37 +9,37 @@ require_relative 'library/controllers/stat_controller'
 
 ENV['RACK_ENV'] ||= 'development'
 
-get "/addresses" do
-  result = AddressesController.new().get
+get "/addresses/:address" do
+  result = AddressesController.new(params).get
   content_type :json, charset: 'utf-8'
   status 200
   result.to_json
 end
 
 post "/addresses" do
-  result = AddressesController.new().post request.params
+  result = AddressesController.new(params).post
   result ? (status 201) : (status 400)
   []
 end
 
-put "/addresses/:ip" do
-  result = AddressesController.new().put request.params
+put "/addresses/:address" do
+  result = AddressesController.new(params).put
   result ? (status 200) : (status 400)
   result
 end
 
-delete "/addresses/:ip" do
-  result = AddressesController.new().delete params[:ip]
+delete "/addresses/:address" do
+  result = AddressesController.new(params).delete
   status 204
   []
 end
 
-get "/pinger" do
-  result = PingerController.new().get
-  content_type :json, charset: 'utf-8'
-  status 200
-  result.to_json
-end
+# get "/pinger" do
+#   result = PingerController.new().get
+#   content_type :json, charset: 'utf-8'
+#   status 200
+#   result.to_json
+# end
 
 get "/stat" do
   result = StatController.new(self.params).get
