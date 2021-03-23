@@ -5,7 +5,7 @@ require_relative '../models/active_period'
 class AddressesController < ApplicationController
 
   def get
-    NetObject.where(address: @params['address']).to_a
+    NetObject.where(id: @params['id']).to_a
   end
 
   def post
@@ -15,12 +15,12 @@ class AddressesController < ApplicationController
   end
 
   def put
-    item = NetObject.find_by(address: @params['address'])
+    item = NetObject.find_by(id: @params['id'])
     item ? NetObject.update(item.id, @params) : (raise 'Object is not exists')
   end
 
   def delete
-    item = NetObject.find_by(address: @params['address'])
+    item = NetObject.find_by(id: @params['id'])
     unless item.nil?
       # active_period = ActivePeriod.find_by(address: @params['address'], stopped_at: nil)
       # active_period.stopped_at = Time.now

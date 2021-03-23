@@ -9,26 +9,26 @@ require_relative 'library/controllers/stat_controller'
 
 ENV['RACK_ENV'] ||= 'development'
 
-get "/addresses/:address" do
+get "/items/:id" do
   result = AddressesController.new(params).get
   content_type :json, charset: 'utf-8'
   status 200
   result.to_json
 end
 
-post "/addresses" do
+post "/items" do
   result = AddressesController.new(params).post
   result ? (status 201) : (status 400)
   []
 end
 
-put "/addresses/:address" do
+put "/items/:id" do
   result = AddressesController.new(params).put
   result ? (status 200) : (status 400)
   result
 end
 
-delete "/addresses/:address" do
+delete "/items/:id" do
   result = AddressesController.new(params).delete
   status 204
   []
