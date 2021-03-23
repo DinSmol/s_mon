@@ -7,8 +7,8 @@ class StatController < ApplicationController
     from = @params['from'] || Time.now - 1.hour
     to = @params['to'] || Time.now
 
-    query = "SELECT MIN(sd.min), AVG(sd.avg), MAX(sd.max), STDDEV(sd.avg) as st_avg,
-COUNT(sd.address) as cnt, (COUNT(CASE WHEN sd.loss = 100 THEN 1 END)/COUNT(sd.address))*100 as loss
+    query = "SELECT MIN(sd.min), AVG(sd.avg), MAX(sd.max), PERCENTILE_DISC(0.5) WITHIN GROUP (ORDER BY sd.avg) as median_score,
+STDDEV(sd.avg) as st_avg, COUNT(sd.address) as cnt, (COUNT(CASE WHEN sd.loss = 100 THEN 1 END)/COUNT(sd.address))*100 as loss
 FROM stat_data sd WHERE sd.address='#{address}' AND (sd.created_at BETWEEN '#{from}' AND '#{to}')"
     begin
       data = StatObject.sql_exec(query).to_a

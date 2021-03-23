@@ -10,7 +10,6 @@ class AddressesController < ApplicationController
 
   def post
     item = NetObject.new(@params)
-    # active_period = ActivePeriod.create(address: body['address'])
     item.save
   end
 
@@ -22,9 +21,6 @@ class AddressesController < ApplicationController
   def delete
     item = NetObject.find_by(id: @params['id'])
     unless item.nil?
-      # active_period = ActivePeriod.find_by(address: @params['address'], stopped_at: nil)
-      # active_period.stopped_at = Time.now
-      # active_period.save
       item.delete
     end
   end

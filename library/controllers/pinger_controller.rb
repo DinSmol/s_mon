@@ -1,5 +1,4 @@
 require "thwait"
-require 'net/ping'
 require_relative '../models/net_object'
 require_relative '../models/stat_object'
 require_relative 'application_controller'

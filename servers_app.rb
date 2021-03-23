@@ -34,16 +34,16 @@ delete "/items/:id" do
   []
 end
 
-# get "/pinger" do
-#   result = PingerController.new().get
-#   content_type :json, charset: 'utf-8'
-#   status 200
-#   result.to_json
-# end
-
 get "/stat" do
   result = StatController.new(self.params).get
   content_type :json, charset: 'utf-8'
   status 200
   result.to_json
 end
+
+# get "/pinger" do
+#   result = PingerController.new().get
+#   content_type :json, charset: 'utf-8'
+#   status 200
+#   result.to_json
+# end
