@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:12.6-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: servers
+      POSTGRES_USER: din
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - ./Docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash -c "cron && rake db:migrate && ruby servers_app.rb -o 0.0.0.0"
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://din:password@db:5432/servers?
+    volumes:
+      - .:/myapp
+    links:
+      - db
+    ports:
+      - 3323:4567
+    depends_on:
+      - db
