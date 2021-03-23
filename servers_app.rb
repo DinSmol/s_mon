@@ -22,6 +22,12 @@ post "/addresses" do
   []
 end
 
+put "/addresses/:ip" do
+  result = AddressesController.new().put request.params
+  result ? (status 200) : (status 400)
+  result
+end
+
 delete "/addresses/:ip" do
   result = AddressesController.new().delete params[:ip]
   status 204

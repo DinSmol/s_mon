@@ -14,8 +14,9 @@ class AddressesController < ApplicationController
     item.save
   end
 
-  def put
-
+  def put body
+    item_id = NetObject.find_by(address: @params['ip']).pluck(:id)
+    result = NetObject.update(item_id, body)
   end
 
   def delete ip
