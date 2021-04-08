@@ -1,9 +1,8 @@
 require_relative '../models/net_object'
 require_relative '../models/active_period'
 
-
+# Class for operating address objects
 class AddressesController < ApplicationController
-
   def get
     NetObject.where(id: @params['id']).to_a
   end
@@ -20,9 +19,6 @@ class AddressesController < ApplicationController
 
   def delete
     item = NetObject.find_by(id: @params['id'])
-    unless item.nil?
-      item.delete
-    end
+    item.delete unless item&.nil?
   end
-
 end

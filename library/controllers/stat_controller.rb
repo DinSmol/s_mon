@@ -1,7 +1,6 @@
 class StatController < ApplicationController
-
   def get
-    raise 'Check params address' unless address = @params['address']
+    raise 'Check params address' unless @params['address']
 
     address = @params['address']
     from = @params['from'] || Time.now - 1.hour
@@ -16,6 +15,6 @@ FROM stat_data sd WHERE sd.address='#{address}' AND (sd.created_at BETWEEN '#{fr
       data = []
     end
 
-    data.length > 0 ? data.first : (raise 'No valid data in db')
+    !data.empty? ? data.first : (raise 'No valid data in db')
   end
 end
