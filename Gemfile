@@ -8,7 +8,7 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "sinatra-activerecord"
 gem 'yajl-ruby', require: 'yajl'
-gem 'activerecord', '~> 6.0'
+gem 'activerecord', '~> 7.0'
 gem 'rake'
 gem 'yaml'
 gem 'erb'
