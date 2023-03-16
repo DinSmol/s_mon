@@ -12,11 +12,11 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    cgi (0.2.0)
+    cgi (0.2.2)
     chronic (0.10.2)
     concurrent-ruby (1.1.8)
     e2mmap (0.1.0)
-    erb (2.2.2)
+    erb (2.2.3)
       cgi
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
