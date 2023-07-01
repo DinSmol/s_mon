@@ -1,4 +1,4 @@
-FROM ruby:2.7.4
+FROM ruby:2.7.8
 WORKDIR /myapp
 RUN apt-get update && apt install -y \
         build-essential libpq-dev cron
