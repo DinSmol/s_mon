@@ -32,7 +32,7 @@ GEM
     rack-protection (2.1.0)
       rack
     rake (13.0.3)
-    resolv (0.2.0)
+    resolv (0.4.0)
     ruby2_keywords (0.0.4)
     sinatra (2.1.0)
       mustermann (~> 1.0)
